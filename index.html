@@ -7,183 +7,127 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; }
+        :root {
+            --primary-bg: #f8f9fa;
+            --accent-color: #8e44ad;
+            --header-gradient: linear-gradient(135deg, #1a5f7a 0%, #8e44ad 100%);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        body { 
+            background-color: var(--primary-bg); 
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: #2c3e50;
+        }
+
+        /* Başlık Alanı - Grafiksel İyileştirme */
         .hero-section { 
-            background: linear-gradient(120deg, #1a5f7a, #8e44ad); 
-            color: white; padding: 60px 0; margin-bottom: 40px; 
-            border-radius: 0 0 30px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); 
+            background: var(--header-gradient); 
+            color: white; 
+            padding: 80px 0; 
+            margin-bottom: 50px; 
+            border-radius: 0 0 50px 50px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
+
+        /* Dönem Klasörleri - Modern Kart Yapısı */
         .folder-card { 
-            border: none; border-radius: 20px; transition: all 0.3s ease; 
-            background: white; cursor: pointer; height: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: none; 
+            border-radius: 25px; 
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; 
+            height: 100%; 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        .folder-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.1); background: #f8f9fa; }
-        .folder-icon { font-size: 3.5rem; color: #f39c12; margin-bottom: 15px; }
+
+        .folder-card:hover { 
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 20px 40px rgba(142, 68, 173, 0.2); 
+            background: #ffffff;
+        }
+
+        .folder-icon { 
+            font-size: 4rem; 
+            background: linear-gradient(to bottom, #f39c12, #d35400);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px; 
+        }
+
+        /* İmza Alanı (Footer) */
+        .footer-area {
+            margin-top: 100px;
+            padding-bottom: 40px;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
         
-        /* Ders Kartları Stili */
-        .course-card { 
-            border: none; border-radius: 15px; transition: all 0.3s ease; 
-            background: #ffffff; cursor: pointer; height: 100%; border-top: 5px solid #8e44ad;
+        .footer-email {
+            display: block;
+            margin-bottom: 5px;
+            color: #95a5a6;
+            text-decoration: none;
+            transition: color 0.3s;
         }
-        .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
-        .card-icon { font-size: 2.5rem; color: #2980b9; margin-bottom: 10px; }
-        
-        .modal-header { background-color: #f8f9fa; }
-        .week-badge {
-            background-color: #e9ecef; color: #333; padding: 5px 10px;
-            border-radius: 50%; font-weight: bold; margin-right: 12px;
-        }
+
+        .footer-email:hover { color: var(--accent-color); }
+
+        /* Başlık Yazı Fontu */
+        .display-brand { font-weight: 800; letter-spacing: -1px; }
+
     </style>
 </head>
 <body>
 
     <div class="hero-section text-center">
         <div class="container">
-            <h1 class="display-3 fw-bold">ADYU Eczacılık</h1>
-            <p class="lead opacity-75">Tüm Dönemler Eğitim ve Materyal Portalı</p>
+            <h1 class="display-3 display-brand mb-2">ADYU Eczacılık</h1>
+            <p class="lead opacity-75 fw-light">Geleceğin Eczacıları İçin İnteraktif Kaynak Merkezi</p>
         </div>
     </div>
 
-    <div class="container mb-5">
+    <div class="container">
         <div class="row g-4 justify-content-center">
             
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card folder-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalDonem1">
-                    <div class="folder-icon"><i class="fas fa-folder-open"></i></div>
-                    <h4 class="fw-bold">Dönem 1</h4>
-                    <p class="text-muted small">12 Ders Mevcut</p>
-                </div>
-            </div>
-
             <script>
-                for(let i=2; i<=10; i++) {
+                const donemler = [
+                    { id: 1, info: "12 Ders Bulunuyor" },
+                    { id: 2, info: "İçerik Hazırlanıyor" },
+                    { id: 3, info: "İçerik Hazırlanıyor" },
+                    { id: 4, info: "İçerik Hazırlanıyor" },
+                    { id: 5, info: "İçerik Hazırlanıyor" },
+                    { id: 6, info: "İçerik Hazırlanıyor" },
+                    { id: 7, info: "İçerik Hazırlanıyor" },
+                    { id: 8, info: "İçerik Hazırlanıyor" },
+                    { id: 9, info: "İçerik Hazırlanıyor" },
+                    { id: 10, info: "Staj ve Mezuniyet" }
+                ];
+
+                donemler.forEach(donem => {
                     document.write(`
                         <div class="col-6 col-md-4 col-lg-3">
-                            <div class="card folder-card p-4 text-center">
-                                <div class="folder-icon"><i class="fas fa-folder"></i></div>
-                                <h4 class="fw-bold">Dönem ${i}</h4>
-                                <p class="text-muted small">İçerik Yakında</p>
+                            <div class="card folder-card p-5 text-center">
+                                <div class="folder-icon"><i class="fas fa-folder-closed"></i></div>
+                                <h3 class="fw-bold h5">Dönem ${donem.id}</h3>
+                                <p class="text-muted small mb-0">${donem.info}</p>
                             </div>
                         </div>
                     `);
-                }
+                });
             </script>
+
         </div>
     </div>
 
-    <div class="modal fade" id="modalDonem1" tabindex="-1">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content" style="background-color: #f0f2f5; border-radius: 25px;">
-                <div class="modal-header border-0">
-                    <h3 class="modal-title fw-bold text-dark">Dönem 1 Dersleri</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div class="row g-3">
-                        
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center" data-bs-toggle="modal" data-bs-target="#modalAnatomi">
-                                <div class="card-icon"><i class="fas fa-skull"></i></div>
-                                <div class="fw-bold small">Anatomi</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 103</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center" data-bs-toggle="modal" data-bs-target="#modalBitki">
-                                <div class="card-icon"><i class="fas fa-seedling"></i></div>
-                                <div class="fw-bold small">Bitki Biyolojisi</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 115</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center" data-bs-toggle="modal" data-bs-target="#modalTibbiBiyo">
-                                <div class="card-icon"><i class="fas fa-dna"></i></div>
-                                <div class="fw-bold small">Tıbbi Biyoloji ve Genetik</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 111</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center">
-                                <div class="card-icon"><i class="fas fa-atom"></i></div>
-                                <div class="fw-bold small">Organik Kimya I</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 117</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center">
-                                <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
-                                <div class="fw-bold small">Biyoistatistik</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 113</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center">
-                                <div class="card-icon"><i class="fas fa-pills"></i></div>
-                                <div class="fw-bold small">Eczacılığa Giriş</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 101</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center">
-                                <div class="card-icon"><i class="fas fa-magnet"></i></div>
-                                <div class="fw-bold small">Fizik</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 105</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center">
-                                <div class="card-icon"><i class="fas fa-vial"></i></div>
-                                <div class="fw-bold small">Genel Kimya</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 107</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center">
-                                <div class="card-icon"><i class="fas fa-calculator"></i></div>
-                                <div class="fw-bold small">Matematik</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 109</div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-4">
-                            <div class="card course-card p-3 text-center">
-                                <div class="card-icon"><i class="fas fa-landmark"></i></div>
-                                <div class="fw-bold small">İnkılap Tarihi I</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">AİİT 101</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+    <footer class="footer-area text-center">
+        <div class="container">
+            <a href="mailto:onursal02@gmail.com" class="footer-email">onursal02@gmail.com</a>
+            <p class="mb-0">Made by Muhammet Onursal, 2026.</p>
         </div>
-    </div>
-
-    <div class="modal fade" id="modalAnatomi" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Anatomi Materyalleri</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">
-        <div class="list-group">
-            <div class="list-group-item d-flex justify-content-between align-items-center">
-                <div><span class="week-badge">1</span> Anatomiye Giriş</div>
-                <div><a href="https://drive.google.com/file/d/1u29wadX4XX2xk552cL-Ulz4cpEUsv8gu/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div>
-            </div>
-            </div>
-    </div></div></div></div>
-
-    <div class="modal fade" id="modalBitki" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Bitki Biyolojisi Materyalleri</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">
-        <div class="list-group">
-            <div class="list-group-item d-flex justify-content-between align-items-center">
-                <div><span class="week-badge">1</span> 1. Hafta Slayt</div>
-                <div><a href="https://drive.google.com/file/d/1cUdIQbH51-bHWmt13dae6Vq-ffVrCx8M/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="https://gemini.google.com/share/a2a8701c289c" target="_blank" class="btn btn-sm btn-outline-success">Quiz</a></div>
-            </div>
-            </div>
-    </div></div></div></div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
