@@ -3,36 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eczacılık Dönem-1 Çalışma Portalı</title>
+    <title>ADYU Eczacılık Portalı</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #f0f2f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; }
         .hero-section { 
-            background: linear-gradient(120deg, #2980b9, #8e44ad); 
-            color: white; padding: 50px 0; margin-bottom: 40px; 
-            border-radius: 0 0 25px 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
+            background: linear-gradient(120deg, #1a5f7a, #8e44ad); 
+            color: white; padding: 60px 0; margin-bottom: 40px; 
+            border-radius: 0 0 30px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); 
         }
+        .folder-card { 
+            border: none; border-radius: 20px; transition: all 0.3s ease; 
+            background: white; cursor: pointer; height: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .folder-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.1); background: #f8f9fa; }
+        .folder-icon { font-size: 3.5rem; color: #f39c12; margin-bottom: 15px; }
+        
+        /* Ders Kartları Stili */
         .course-card { 
             border: none; border-radius: 15px; transition: all 0.3s ease; 
-            margin-bottom: 20px; background: white; cursor: pointer; 
-            height: 100%; position: relative; overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: #ffffff; cursor: pointer; height: 100%; border-top: 5px solid #8e44ad;
         }
-        .course-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
-        .course-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: #8e44ad; }
-        .card-icon { font-size: 3rem; margin-bottom: 15px; color: #2980b9; transition: color 0.3s; }
-        .course-card:hover .card-icon { color: #8e44ad; }
-        .course-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: #2c3e50; }
-        .course-code { font-size: 0.85rem; color: #7f8c8d; font-weight: 500; }
-        .modal-header { background-color: #f8f9fa; border-bottom: 2px solid #e9ecef; }
-        .modal-title { color: #2c3e50; font-weight: bold; }
-        .list-group-item { border-left: 4px solid transparent; transition: background 0.2s; border-bottom: 1px solid #eee; }
-        .list-group-item:hover { background-color: #f8f9fa; border-left-color: #2980b9; }
+        .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+        .card-icon { font-size: 2.5rem; color: #2980b9; margin-bottom: 10px; }
+        
+        .modal-header { background-color: #f8f9fa; }
         .week-badge {
-            background-color: #e9ecef; color: #495057; padding: 5px 10px;
-            border-radius: 50%; font-weight: bold; margin-right: 15px;
-            width: 35px; height: 35px; display: inline-flex; align-items: center; justify-content: center;
+            background-color: #e9ecef; color: #333; padding: 5px 10px;
+            border-radius: 50%; font-weight: bold; margin-right: 12px;
         }
     </style>
 </head>
@@ -40,140 +39,151 @@
 
     <div class="hero-section text-center">
         <div class="container">
-            <h1 class="display-4 fw-bold"><i class="fas fa-graduation-cap"></i> Eczacılık Dönem-1</h1>
-            <p class="lead opacity-75">Ders Materyalleri ve İnteraktif Test Portalı</p>
+            <h1 class="display-3 fw-bold">ADYU Eczacılık</h1>
+            <p class="lead opacity-75">Tüm Dönemler Eğitim ve Materyal Portalı</p>
         </div>
     </div>
 
     <div class="container mb-5">
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
+            
             <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalAnatomi">
-                    <div class="card-icon"><i class="fas fa-skull"></i></div>
-                    <div class="course-title">Anatomi</div>
-                    <div class="course-code">ECZ 103</div>
+                <div class="card folder-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalDonem1">
+                    <div class="folder-icon"><i class="fas fa-folder-open"></i></div>
+                    <h4 class="fw-bold">Dönem 1</h4>
+                    <p class="text-muted small">12 Ders Mevcut</p>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalOrganik">
-                    <div class="card-icon"><i class="fas fa-atom"></i></div>
-                    <div class="course-title">Organik Kimya I</div>
-                    <div class="course-code">ECZ 117</div>
+
+            <script>
+                for(let i=2; i<=10; i++) {
+                    document.write(`
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card folder-card p-4 text-center">
+                                <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                                <h4 class="fw-bold">Dönem ${i}</h4>
+                                <p class="text-muted small">İçerik Yakında</p>
+                            </div>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalDonem1" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="background-color: #f0f2f5; border-radius: 25px;">
+                <div class="modal-header border-0">
+                    <h3 class="modal-title fw-bold text-dark">Dönem 1 Dersleri</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalBiyokimya">
-                    <div class="card-icon"><i class="fas fa-flask"></i></div>
-                    <div class="course-title">Biyokimya I</div>
-                    <div class="course-code">ECZ 209</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalTibbiBiyo">
-                    <div class="card-icon"><i class="fas fa-dna"></i></div>
-                    <div class="course-title">Tıbbi Biyoloji</div>
-                    <div class="course-code">ECZ 111</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalBitki">
-                    <div class="card-icon"><i class="fas fa-seedling"></i></div>
-                    <div class="course-title">Bitki Biyolojisi</div>
-                    <div class="course-code">ECZ 115</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalIstatistik">
-                    <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
-                    <div class="course-title">Biyoistatistik</div>
-                    <div class="course-code">ECZ 113</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalBiyoLab">
-                    <div class="card-icon"><i class="fas fa-vial"></i></div>
-                    <div class="course-title">Biyokimya Lab.</div>
-                    <div class="course-code">ECZ 211</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalFizyo">
-                    <div class="card-icon"><i class="fas fa-heart-pulse"></i></div>
-                    <div class="course-title">Fizyopatoloji</div>
-                    <div class="course-code">ECZ 215</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalGiris">
-                    <div class="card-icon"><i class="fas fa-prescription-bottle-medical"></i></div>
-                    <div class="course-title">Eczacılığa Giriş</div>
-                    <div class="course-code">ECZ 101</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalHesap">
-                    <div class="card-icon"><i class="fas fa-calculator"></i></div>
-                    <div class="course-title">Biyokimyasal Hes.</div>
-                    <div class="course-code">ECZ 231</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalAntibiyotik">
-                    <div class="card-icon"><i class="fas fa-bacteria"></i></div>
-                    <div class="course-title">Antibiyotik Duyarlılık Testleri</div>
-                    <div class="course-code">ECZ 233</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalHalk">
-                    <div class="card-icon"><i class="fas fa-hands-holding-child"></i></div>
-                    <div class="course-title">Halk Sağlığı</div>
-                    <div class="course-code">ECZ 213</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card course-card p-4 text-center" data-bs-toggle="modal" data-bs-target="#modalInkilap">
-                    <div class="card-icon"><i class="fas fa-landmark"></i></div>
-                    <div class="course-title">İnkılap Tarihi I</div>
-                    <div class="course-code">AİİT 101</div>
+                <div class="modal-body p-4">
+                    <div class="row g-3">
+                        
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center" data-bs-toggle="modal" data-bs-target="#modalAnatomi">
+                                <div class="card-icon"><i class="fas fa-skull"></i></div>
+                                <div class="fw-bold small">Anatomi</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 103</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center" data-bs-toggle="modal" data-bs-target="#modalBitki">
+                                <div class="card-icon"><i class="fas fa-seedling"></i></div>
+                                <div class="fw-bold small">Bitki Biyolojisi</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 115</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center" data-bs-toggle="modal" data-bs-target="#modalTibbiBiyo">
+                                <div class="card-icon"><i class="fas fa-dna"></i></div>
+                                <div class="fw-bold small">Tıbbi Biyoloji ve Genetik</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 111</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center">
+                                <div class="card-icon"><i class="fas fa-atom"></i></div>
+                                <div class="fw-bold small">Organik Kimya I</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 117</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center">
+                                <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+                                <div class="fw-bold small">Biyoistatistik</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 113</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center">
+                                <div class="card-icon"><i class="fas fa-pills"></i></div>
+                                <div class="fw-bold small">Eczacılığa Giriş</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 101</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center">
+                                <div class="card-icon"><i class="fas fa-magnet"></i></div>
+                                <div class="fw-bold small">Fizik</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 105</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center">
+                                <div class="card-icon"><i class="fas fa-vial"></i></div>
+                                <div class="fw-bold small">Genel Kimya</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 107</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center">
+                                <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                                <div class="fw-bold small">Matematik</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">ECZ 109</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-4">
+                            <div class="card course-card p-3 text-center">
+                                <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                                <div class="fw-bold small">İnkılap Tarihi I</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">AİİT 101</div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="modalAnatomi" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title"><i class="fas fa-skull me-2"></i>Anatomi (ECZ 103)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="list-group">
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">1</span> Anatomiye Giriş</div><div><a href="https://drive.google.com/file/d/1u29wadX4XX2xk552cL-Ulz4cpEUsv8gu/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">2</span> Kemikler</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">3</span> Eklemler</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">4</span> Kaslar</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">5</span> Dolaşım Sistemi</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">6</span> Solunum Sistemi</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">7</span> Sindirim Sistemi</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">8</span> Üriner Sistemi</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">9</span> Üreme Sistemi</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">10</span> Sinir Sistemi</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">11</span> Duyu Organları</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">12</span> Endokrin Sistemi</div><div><a href="#" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-    </div></div></div></div></div>
+    <div class="modal fade" id="modalAnatomi" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Anatomi Materyalleri</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">
+        <div class="list-group">
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div><span class="week-badge">1</span> Anatomiye Giriş</div>
+                <div><a href="https://drive.google.com/file/d/1u29wadX4XX2xk552cL-Ulz4cpEUsv8gu/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="#" class="btn btn-sm btn-outline-success">Quiz</a></div>
+            </div>
+            </div>
+    </div></div></div></div>
 
-    <div class="modal fade" id="modalBitki" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title"><i class="fas fa-seedling me-2"></i>Bitki Biyolojisi (ECZ 115)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="list-group">
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">1</span> 1. Slayt</div><div><a href="https://drive.google.com/file/d/1cUdIQbH51-bHWmt13dae6Vq-ffVrCx8M/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="https://gemini.google.com/share/a2a8701c289c" target="_blank" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">2</span> 2. Slayt</div><div><a href="https://drive.google.com/file/d/1AwbwwTL8tWsuerYUiDMr31hn0LLkAPbO/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="https://gemini.google.com/share/66c3faa1d8f2" target="_blank" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">3</span> 3. Slayt</div><div><a href="https://drive.google.com/file/d/1rNgeEXgNJzKMMhNItacuK1f9uBgj3rsM/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="https://gemini.google.com/share/70882a9f30c4" target="_blank" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        <div class="list-group-item d-flex justify-content-between align-items-center"><div><span class="week-badge">4</span> 4. Slayt</div><div><a href="https://drive.google.com/file/d/1_MSm8I36B5_k5fuxhKEnlYbSl_pj_cbG/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="https://gemini.google.com/share/79aa5fcbd88b" target="_blank" class="btn btn-sm btn-outline-success">Quiz</a></div></div>
-        </div></div></div></div></div>
-
-    <div class="modal fade" id="modalOrganik" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Organik Kimya I</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalBiyokimya" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Biyokimya I</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalTibbiBiyo" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Tıbbi Biyoloji</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalIstatistik" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Biyoistatistik</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalBiyoLab" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Biyokimya Lab.</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalFizyo" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Fizyopatoloji</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalGiris" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Eczacılığa Giriş</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalHesap" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Biyokimyasal Hesaplamalar</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalAntibiyotik" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Antibiyotik Duyarlılık</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalHalk" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Halk Sağlığı</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
-    <div class="modal fade" id="modalInkilap" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">İnkılap Tarihi I</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">İçerikler yakında eklenecek...</div></div></div></div>
+    <div class="modal fade" id="modalBitki" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Bitki Biyolojisi Materyalleri</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">
+        <div class="list-group">
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div><span class="week-badge">1</span> 1. Hafta Slayt</div>
+                <div><a href="https://drive.google.com/file/d/1cUdIQbH51-bHWmt13dae6Vq-ffVrCx8M/view?usp=share_link" target="_blank" class="btn btn-sm btn-outline-danger me-2">Slayt</a><a href="https://gemini.google.com/share/a2a8701c289c" target="_blank" class="btn btn-sm btn-outline-success">Quiz</a></div>
+            </div>
+            </div>
+    </div></div></div></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
