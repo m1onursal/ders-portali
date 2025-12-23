@@ -34,7 +34,25 @@ const portalData = {
                     { week: 4, title: "4. Hafta", slide: "https://drive.google.com/file/d/1_MSm8I36B5_k5fuxhKEnlYbSl_pj_cbG/view?usp=share_link", quiz: "https://gemini.google.com/share/79aa5fcbd88b" }
                 ]
             },
-            { id: "tibbi-biyo", name: "Tıbbi Biyoloji", code: "ECZ 111", icon: "fa-dna", weeks: [] },
+            {
+                id: "tibbi-biyo",
+                name: "Tıbbi Biyoloji ve Genetik",
+                code: "ECZ 111",
+                icon: "fa-dna",
+                weeks: [
+                    { week: 1, title: "1. Hafta", slide: "https://drive.google.com/file/d/1v9dJVyG1c3_z99OxjhtXQzdoke-q4c9M/view?usp=share_link", quiz: "https://gemini.google.com/share/522c044b7b1b" },
+                    { week: 2, title: "2. Hafta", slide: "https://drive.google.com/file/d/1lg38xFIJH6DXaQZCV3GXGD_83JB7ebCs/view?usp=share_link", quiz: "https://gemini.google.com/share/531b3c39baba" },
+                    { week: 3, title: "3. Hafta", slide: "https://drive.google.com/file/d/1T1PsKgt_r8sF0bxxWgbuLMHaxKYm4deY/view?usp=share_link", quiz: "https://gemini.google.com/share/2ef4a5f554f2" },
+                    { week: 4, title: "4. Hafta", slide: "https://drive.google.com/file/d/1eEFOEIRnClFRVUoVIBRXi-UHRAYx5-_L/view?usp=share_link", quiz: "https://gemini.google.com/share/869dea2035f3" },
+                    { week: 5, title: "5. Hafta", slide: "https://drive.google.com/file/d/1QgxyAcFSF2cJRYSUrvJUTYwSrbxq4BWt/view?usp=share_link", quiz: "https://gemini.google.com/share/8a0f61adf7af" },
+                    { week: 6, title: "6. Hafta", slide: "https://drive.google.com/file/d/1Opi_tQm9xLzbXhrlDYVE_2Z3ROqDRO7l/view?usp=share_link", quiz: "https://gemini.google.com/share/c4043afea144" },
+                    { week: 7, title: "7. Hafta", slide: "https://drive.google.com/file/d/1cykga7crB7TglI6u128Ryn_0KVxvqwVA/view?usp=share_link", quiz: "https://gemini.google.com/share/c64a1c6e9541" },
+                    { week: 8, title: "8. Hafta", slide: "https://drive.google.com/file/d/12aDsxbZZ_N344eyF3uSXQnU1uBkSL6g3/view?usp=share_link", quiz: "https://gemini.google.com/share/d5f1010b79d7" },
+                    { week: 9, title: "9. Hafta", slide: "https://drive.google.com/file/d/1WnDFaNRPJ4Y0tcQbk3bk6SnI3qPnP4Bm/view?usp=share_link", quiz: "https://gemini.google.com/share/bb32c3646f29" },
+                    { week: 10, title: "10. Hafta", slide: "https://drive.google.com/file/d/1LZpUTHKOQmZKzoD91-k-dzrqClximJRG/view?usp=share_link", quiz: "https://gemini.google.com/share/2a1d3b899c3d" },
+                    { week: 11, title: "11. Hafta", slide: "https://drive.google.com/file/d/1fv_XsR1zQyeEcfQoqhXe27btozK8xJZX/view?usp=share_link", quiz: "https://gemini.google.com/share/ce7659ab9fbe" }
+                ]
+            },
             { id: "organik-kimya", name: "Organik Kimya I", code: "ECZ 117", icon: "fa-atom", weeks: [] },
             { id: "fizik", name: "Fizik", code: "ECZ 105", icon: "fa-magnet", weeks: [] },
             { id: "matematik", name: "Matematik", code: "ECZ 109", icon: "fa-calculator", weeks: [] },
