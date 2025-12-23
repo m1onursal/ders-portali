@@ -59,9 +59,9 @@ const portalData = {
             { id: "biyoistatistik", name: "Biyoistatistik", code: "ECZ 113", icon: "fa-chart-line", weeks: [] },
             { id: "genel-kimya", name: "Genel Kimya", code: "ECZ 107", icon: "fa-flask", weeks: [] },
             { id: "ecz-giris", name: "Eczacılığa Giriş", code: "ECZ 101", icon: "fa-pills", weeks: [] },
-                    { id: "inkilap", name: "İnkılap Tarihi I", code: "AİİT 101", icon: "fa-landmark", weeks: [] },
-                    { id: "yabanci-dil", name: "Yabancı Dil I", code: "YD 101", icon: "fa-language", weeks: [] },
-                    { id: "turk-dili", name: "Türk Dili I", code: "TD 101", icon: "fa-pen-nib", weeks: [] }
+            { id: "inkilap", name: "İnkılap Tarihi I", code: "AİİT 101", icon: "fa-landmark", weeks: [] },
+            { id: "yabanci-dil", name: "Yabancı Dil I", code: "YD 101", icon: "fa-language", weeks: [] },
+            { id: "turk-dili", name: "Türk Dili I", code: "TD 101", icon: "fa-pen-nib", weeks: [] }
         ]
     },
     donem2: { title: "Dönem 2", courses: [] },
